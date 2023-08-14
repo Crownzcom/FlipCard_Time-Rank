@@ -1,7 +1,24 @@
 # 🌍 City-Country Match Game Developer Guide
 
+## **📌 Table of Contents**:
+- [Introduction](#-introduction)
+- [Frontend Components](#-frontend-components)
+  - [HTML](#11-html)
+  - [CSS](#12-css)
+  - [JavaScript](#13-javascript)
+- [Backend Components](#-backend-components)
+  - [Cloudflare Worker](#21-cloudflare-worker)
+  - [Google Apps Script (GAS)](#22-google-apps-script-gas)
+- [Game Flow](#-game-flow)
+  - [Initialization](#31-initialization)
+  - [Gameplay](#32-gameplay)
+  - [Game Completion](#33-game-completion)
+  - [Game Reset](#34-game-reset)
+- [Serverless Computing](#-serverless-computing)
+- [Conclusion](#-conclusion)
+
 ## **📌 Introduction**:
-The City-Country Match Game is a card-matching game where players match cities to their corresponding countries. 🏙️🗺️ The game measures the time taken by the player to match all pairs and then ranks the player based on their performance. This guide provides a detailed breakdown of the game's components and logic.
+The City-Country Match Game is a card-matching game where players match cities to their corresponding countries. 🏙️🗺️ The game measures the time taken by the player to match all pairs and then ranks the player based on their performance.
 
 ## **1. 🖥️ Frontend Components**:
 
