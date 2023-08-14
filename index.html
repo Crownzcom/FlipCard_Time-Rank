@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to Google Fonts for Roboto font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Page Title -->
+    <title>City-Country Match Game</title>
+
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ==========================
+    INTRO MODAL
+    ========================== -->
+    <!-- Modal that introduces the game to the user -->
+    <div class="modal" id="introModal">
+        <div class="modal-content">
+            <h2>Welcome!</h2>
+            <p>Can you match cities to the countries they belong?</p>
+            <div class="modal-buttons">
+                <button id="startGame">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================
+    GAME CONTAINER
+    ========================== -->
+    <!-- Main container for the game -->
+    <div class="game-container">
+
+        <!-- Display for the timer -->
+        <div class="game-info">
+            <span id="timer">00:00</span>
+        </div>
+
+        <!-- Area where the game cards will be dynamically generated -->
+        <div class="game-board">
+            <!-- Cards will be generated and appended here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- ==========================
+    WIN MODAL WITH CONTACT FORM
+    ========================== -->
+    <!-- Modal that appears when the user wins the game -->
+    <div class="modal" id="winModal">
+        <div class="modal-content">
+            <!-- Spinner, time, and rank will be added dynamically by JavaScript -->
+            
+            <h2>Congratulations!</h2>
+            <p>You have matched all the cities to the countries they belong.</p>
+            <!-- Button to restart the game -->
+            <button id="restartGame">&#x21BB; Restart</button>
+            <!-- Removed the form section -->
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+
+</html>

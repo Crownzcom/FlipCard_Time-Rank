@@ -1,0 +1,262 @@
+/* === GLOBAL STYLES === */
+body {
+    margin: 0;
+    padding: 20px 0; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+    overflow: auto;
+    font-family: Roboto, sans-serif;
+}
+
+/* === GAME CONTAINER === */
+.game-container {
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -moz-fit-content;
+    width:fit-content;
+    max-width: 100%;
+}
+
+/* === GAME BOARD === */
+.game-board {
+    display: grid;
+    width: -moz-fit-content;
+    width: fit-content;
+    gap: 10px; 
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+/* === CARDS === */
+.card {
+    box-sizing: border-box;
+    height: 150px;
+    width: 150px;
+    margin: 5px; 
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-back, .card-front {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: transform 1s;  
+}
+
+.card-back {
+    background-color: #f5f5f5;
+    background-image: url("images/globe.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+    background-size: cover;
+    background-position: center;
+}
+
+.card.flipped .card-front {
+    transform: rotateY(0);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(180deg);
+}
+
+/* === GAME INFO === */
+.game-info {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 1.5em;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* === MODALS === */
+.modal {
+    display: none;
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(243, 255, 255, 0.973);
+    z-index: 1000;
+}
+
+.modal-content {
+    display: flex;           /* Add this line */
+    flex-direction: column;  /* Add this line */
+    justify-content: center; /* Add this line */
+    align-items: center;     /* Add this line */
+    /* ... */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;  
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  
+    border-radius: 8px;  
+    padding: 15px 20px;
+    /* ... */
+    width: 90%;  /* Increased width */
+    max-width: 90%;  /* Set a maximum width */
+    height: auto;  /* Let the height adjust based on content */
+    max-height: 80vh;  /* Set a maximum height */
+    overflow-y: auto;  /* Allow scrolling within the modal if content exceeds max-height*/
+  
+}
+
+.modal-content h2 {
+    color: #333;  
+    font-weight:400;
+    font-size: 24px;  
+    margin-bottom: 15px;
+    position: relative; 
+    z-index: 1;
+}
+
+#winModal .green-text {/* for the rank message*/
+    color: green;
+}
+
+
+.modal-content p {
+    color: #888;
+    font-weight:200;
+    font-size: 18px;
+    font-stretch: 100%;
+    line-height: 1.5;
+    margin: 3px 0; /* Adjust the value as needed */
+}
+
+.modal-buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #ff407d;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b90b43;
+}
+
+#startGame {
+    animation: pulsate 2s infinite;
+    background-color: #ff407d;
+}
+
+.loading-spinner {
+    border: 8px solid #a76868;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    z-index: 10; /* Add this line */
+    background-color: rgba(255, 255, 255, 0.8); /* Add this line */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* === KEYFRAMES === */
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+/* === MEDIA QUERIES === */
+@media (min-width: 601px) {
+    .game-board {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+@media (min-width: 801px) {
+    .game-board {
+        grid-template-columns: repeat(5, 1fr); 
+    }
+}
+
+@media (max-width: 750px) {
+    .card {
+        width: 85px; 
+        height: 85px;
+    }
+}
+
+@media (max-width: 700px) {
+    .modal-content h2 {
+        font-size: 20px;  /* Reduced font size */
+        margin-bottom: 10px;
+    }
+
+    .modal-content p {
+        font-size: 16px;  /* Reduced font size */
+    }
+
+    button {
+        padding: 8px 15px;  /* Reduced padding */
+        font-size: 14px;   /* Reduced font size */
+    }
+}
+
+@media (max-width: 500px) {
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
