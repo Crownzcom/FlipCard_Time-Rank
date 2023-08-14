@@ -35,9 +35,9 @@ The game's codebase is organized into folders for clarity:
 The game's main script (`script.js`) is loaded as an ES6 module. This allows for the use of modern JavaScript features like the `import` and `export` statements. When including the script in your HTML, ensure that you specify the type as `module`:
 
 
-```javascript
+```html
 <script src="script.js" type="module"></script>
-´´´
+```
 
 This tells the browser to treat `script.js` as an ES6 module. 
 
@@ -52,9 +52,9 @@ To set up the Cloudflare Worker URL:
 1. Create a file named `urls.js` in the root directory of your project.
 2. Inside this file, add the following content:
 
-´´´javascript
+```javascript
 export const CLOUDFLARE_WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
-´´´	
+```
 
 Replace `'YOUR_CLOUDFLARE_WORKER_URL_HERE'` with your actual Cloudflare Worker URL.
 
