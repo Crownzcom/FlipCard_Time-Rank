@@ -35,7 +35,9 @@ The game's codebase is organized into folders for clarity:
 The game's main script (`script.js`) is loaded as an ES6 module. This allows for the use of modern JavaScript features like the `import` and `export` statements. When including the script in your HTML, ensure that you specify the type as `module`:
 
 
-`<script src="script.js" type="module"></script>´
+```javascript
+<script src="script.js" type="module"></script>
+´´´
 
 This tells the browser to treat `script.js` as an ES6 module. 
 
