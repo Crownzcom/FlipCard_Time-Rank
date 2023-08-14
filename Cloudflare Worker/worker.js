@@ -1,5 +1,5 @@
 // Replace with your URL of the Google Apps Script endpoint
-const GOOGLE_SCRIPT_URL = 'Google_Apps_Script_Endpoint_URL';
+const GOOGLE_SCRIPT_URL = 'GOOGLE_APPS_SCRIPT_WEB_APP_URL';
 
 // Headers to handle CORS (Cross-Origin Resource Sharing)
 const corsHeaders = {

@@ -1,4 +1,9 @@
 // ==========================
+// IMPORTS
+// ==========================
+import { CLOUDFLARE_WORKER_URL } from './urls.js';
+
+// ==========================
 // VARIABLES
 // ==========================
 
@@ -256,7 +261,7 @@ function showWinModal () {
 async function sendTimeToServer (time) {
   try {
     const response = await fetch(
-      'https://flipcrard-tr.derrickmal123.workers.dev/',
+      CLOUDFLARE_WORKER_URL,
       {
         method: 'POST',
         body: JSON.stringify({
