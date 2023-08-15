@@ -87,7 +87,7 @@ If you try to open your HTML file directly from your file system using the `file
 
 Always use a local development server, like Live Server, when developing and testing web applications. This approach mirrors the environment of a live web server and helps you bypass many browser security restrictions related to the `file:///` protocol.
 
----
+--
 
 ## Integrating URLs Directly into Code 🌐
 
