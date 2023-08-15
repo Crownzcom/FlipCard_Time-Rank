@@ -1,7 +1,7 @@
 // ==========================
 // IMPORTS
 // ==========================
-import { CLOUDFLARE_WORKER_URL } from './urls.js';
+import { CLOUDFLARE_WORKER_URL } from './urls.mod.js';
 
 // ==========================
 // VARIABLES
