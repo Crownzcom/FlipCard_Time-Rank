@@ -234,26 +234,26 @@ button:hover {
   }
 
 /* === MEDIA QUERIES === */
-@media (min-width: 601px) and (orientation: landscape){
+@media (min-width: 601px) {
     .game-board {
         grid-template-columns: repeat(4, 1fr); 
     }
 }
 
-@media (min-width: 801px) and (orientation: landscape){
+@media (min-width: 801px) {
     .game-board {
         grid-template-columns: repeat(5, 1fr); 
     }
 }
 
-@media (max-width: 750px) and (orientation: landscape) {
+@media (max-width: 750px) {
     .card {
         width: 85px; 
         height: 85px;
     }
 }
 
-@media (max-width: 700px) and (orientation: landscape) {
+@media (max-width: 700px) {
     .modal-content h2 {
         font-size: 20px;  /* Reduced font size */
         margin-bottom: 10px;
