@@ -2,13 +2,13 @@
 
 ## **📌 Table of Contents**:
 - [Introduction](#-introduction)
-- [Project Structure](#-project-structure)
-- [Using ES6 Modules](#using-es6-modules-📦)
-- [Setting Up URLs](#setting-up-urls-🌐)
-- [Local Development and Testing](#local-development-and-testing-🖥️)
-  - [The `file:///` Protocol Issue](#the-file-protocol-issue-🚫)
-  - [Integrating URLs Directly into Code](#integrating-urls-directly-into-code-🌐)
-- [Security Note](#security-note-🔒)
+  - [Project Structure](#-project-structure)
+  - [Using ES6 Modules](#using-es6-modules-📦)
+  - [Setting Up URLs](#setting-up-urls-🌐)
+  - [Local Development and Testing](#local-development-and-testing-🖥️)
+    - [The `file:///` Protocol Issue](#the-file-protocol-issue-🚫)
+    - [Integrating URLs Directly into Code](#integrating-urls-directly-into-code-🌐)
+  - [Security Note](#security-note-🔒)
 - [Frontend Components](#-frontend-components)
   - [HTML](#11-html)
   - [CSS](#12-css)
@@ -27,13 +27,15 @@
 ## **📌 Introduction**:
 The City-Country Match Game is a card-matching game where players match cities to their corresponding countries. 🏙️🗺️ The game measures the time taken by the player to match all pairs and then ranks the player based on their performance.
 
-## **📌 Project Structure**:
+--
+### **📌 Project Structure**:
 The game's codebase is organized into folders for clarity:
 - **Cloudflare Worker**: Contains the code for the Cloudflare worker, which acts as a bridge between the frontend and the Google Apps Script.
 - **Google Apps Script**: Houses the Google Apps Script code that interacts with Google Sheets and calculates player rankings.
 - **urls.js**: A file (not included in version control for security reasons) that exports the URLs for the Cloudflare Worker. This file is imported where the URL is needed.
 
-## **Using ES6 Modules 📦**
+--
+### **Using ES6 Modules 📦**
 
 The game's main script (`script.js`) is loaded as an ES6 module. This allows for the use of modern JavaScript features like the `import` and `export` statements. When including the script in your HTML, ensure that you specify the type as `module`:
 
@@ -46,9 +48,10 @@ This tells the browser to treat `script.js` as an ES6 module.
 
 **Note:** ES6 modules are widely supported in modern browsers, but they might not work in older versions or some browsers. Always ensure compatibility based on your target audience.
 
-## **Setting Up URLs 🌐**:
+--
+### **Setting Up URLs 🌐**:
 
-### **Cloudflare Worker URL**:
+#### **Cloudflare Worker URL**:
 
 To set up the Cloudflare Worker URL:
 
@@ -61,54 +64,55 @@ export const CLOUDFLARE_WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
 
 Replace `'YOUR_CLOUDFLARE_WORKER_URL_HERE'` with your actual Cloudflare Worker URL.
 
-### **Google Apps Script URL**:
+#### **Google Apps Script URL**:
 
 For the Google Apps Script (GAS) URL, you'll need to manually replace the placeholder in the Cloudflare Worker code with your GAS web app URL. This is because the Cloudflare Worker cannot import from local directories.
 
-### **Security Note 🔒**:
+#### **Security Note 🔒**:
 
 If you plan to make your repository public, remember to add the `urls.js` file to your `.gitignore` to prevent your Cloudflare Worker URL (and any other sensitive URLs or keys) from being exposed. This is crucial for security reasons.
 
-## Local Development and Testing 🖥️
+--
+### Local Development and Testing 🖥️
 
 When developing and testing web applications locally, it's essential to be aware of certain browser security restrictions that can affect how your application runs.
 
-### The `file:///` Protocol Issue 🚫
+#### The `file:///` Protocol Issue 🚫
 
 If you try to open your HTML file directly from your file system using the `file:///` protocol, you might encounter issues. Modern web browsers restrict certain features, including the ability to load ES6 modules, to protect against potential security threats.
 
-#### Why does this happen? 🤔
+##### Why does this happen? 🤔
 
 1. **CORS (Cross-Origin Resource Sharing) Restrictions**: Browsers implement CORS to prevent potential security issues arising when web pages make requests to domains other than their own. With the `file:///` protocol, the origin is `null`, leading browsers to block scripts due to CORS policies.
 
 2. **ES6 Modules**: These modules have their own set of CORS-related behaviors. They always request the module file with a CORS request, expecting the server to reply with appropriate CORS headers. This is a security feature ensuring modules are loaded securely. The `file:///` protocol doesn't support these headers, leading to errors.
 
-#### Solution 💡
+##### Solution 💡
 
 Always use a local development server, like Live Server, when developing and testing web applications. This approach mirrors the environment of a live web server and helps you bypass many browser security restrictions related to the `file:///` protocol.
 
 --
 
-## Integrating URLs Directly into Code 🌐
+### Integrating URLs Directly into Code 🌐
 
 You have the option to directly integrate URLs, such as the Google Apps Script URL, into your code. 
 
-### Advantages ✅
+#### Advantages ✅
 
 1. **Simplicity**: Direct integration can be straightforward and requires less configuration.
 2. **No Additional Files**: You won't need extra files, like `urls.js`, making your project structure a bit simpler.
 
-### Disadvantages ❌
+#### Disadvantages ❌
 
 1. **Security Risks**: Exposing URLs, especially those linked to backend services, can pose security threats. Malicious users can potentially misuse these URLs.
 2. **Less Flexibility**: If the URL changes, you'll need to modify and redeploy your application. With a configuration file, you can change the URL without touching the main code.
 3. **Public Repositories**: If you're using a version control system and plan to make your repository public, integrating URLs directly can expose them to everyone. Always ensure sensitive information is kept private.
 
-### Recommendation 🌟
+#### Recommendation 🌟
 
 If you decide to integrate URLs directly, always weigh the pros and cons. For most scenarios, especially when security is a concern, using a configuration file like `urls.js` and adding it to `.gitignore` is a safer choice.
 
-
+---
 ## **1. 🖥️ Frontend Components**:
 
 ### **1.1 HTML**:
@@ -128,6 +132,7 @@ The game's logic is implemented in JavaScript. Key functionalities include:
 - **Timer**: ⏲️ Tracks the player's game duration.
 - **Ranking**: 📊 Sends the player's time to a backend service to determine their rank.
 
+---
 ## **2. ⚙️ Backend Components**:
 
 ### **2.1 Cloudflare Worker**:
@@ -138,6 +143,7 @@ The GAS serves two main purposes:
 - **Data Storage**: 📝 Saves the player's time to a Google Sheet.
 - **Rank Calculation**: 🧮 Determines the player's rank based on their time and the times of previous players.
 
+---
 ## **3. 🎲 Game Flow**:
 
 ### **3.1 Initialization**:
@@ -163,6 +169,7 @@ Players can restart the game, which:
 - Clears dynamically generated content.
 - Reinitializes the game, offering a fresh start.
 
+---
 ## **4. ☁️ Serverless Computing**:
 The game leverages the principles of serverless computing. Instead of maintaining a dedicated backend server, it uses a Cloudflare worker and a Google Apps Script. This approach offers several benefits:
 - **Scalability**: 📈 Automatically scales based on demand.
@@ -170,6 +177,7 @@ The game leverages the principles of serverless computing. Instead of maintainin
 - **Maintenance**: 🛠️ Reduced operational overhead as there's no server to manage.
 - **Performance**: ⚡ Reduced latency as serverless functions can run close to the user.
 
+---
 ## **5. 🎉 Conclusion**:
 The City-Country Match Game is a comprehensive example of combining frontend interactivity with serverless backend logic. It showcases how modern web development can create engaging user experiences without the need for traditional server infrastructure.
 
