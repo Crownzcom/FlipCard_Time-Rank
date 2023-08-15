@@ -24,50 +24,47 @@
 ## **📌 Introduction**:
 The City-Country Match Game is a card-matching game where players match cities to their corresponding countries. 🏙️🗺️ The game measures the time taken by the player to match all pairs and then ranks the player based on their performance.
 
-## **📌 Project Structure**:
+### **📌 Project Structure**:
 The game's codebase is organized into folders for clarity:
 - **Cloudflare Worker**: Contains the code for the Cloudflare worker, which acts as a bridge between the frontend and the Google Apps Script.
 - **Google Apps Script**: Houses the Google Apps Script code that interacts with Google Sheets and calculates player rankings.
 - **urls.js**: A file (not included in version control for security reasons) that exports the URLs for the Cloudflare Worker. This file is imported where the URL is needed.
 
-## Using ES6 Modules 📦
+### **Using ES6 Modules 📦**
 
 The game's main script (`script.js`) is loaded as an ES6 module. This allows for the use of modern JavaScript features like the `import` and `export` statements. When including the script in your HTML, ensure that you specify the type as `module`:
 
-´´´html
+
+```html
 <script src="script.js" type="module"></script>
-´´´
+```
 
 This tells the browser to treat `script.js` as an ES6 module. 
 
 **Note:** ES6 modules are widely supported in modern browsers, but they might not work in older versions or some browsers. Always ensure compatibility based on your target audience.
 
-## Setting Up URLs 🌐
+### **Setting Up URLs 🌐**:
 
-### Cloudflare Worker URL
+#### **Cloudflare Worker URL**:
 
 To set up the Cloudflare Worker URL:
 
 1. Create a file named `urls.js` in the root directory of your project.
 2. Inside this file, add the following content:
 
-´´´javascript
+```javascript
 export const CLOUDFLARE_WORKER_URL = 'YOUR_CLOUDFLARE_WORKER_URL_HERE';
-´´´	
+```
 
 Replace `'YOUR_CLOUDFLARE_WORKER_URL_HERE'` with your actual Cloudflare Worker URL.
 
-### Google Apps Script URL
+#### **Google Apps Script URL**:
 
 For the Google Apps Script (GAS) URL, you'll need to manually replace the placeholder in the Cloudflare Worker code with your GAS web app URL. This is because the Cloudflare Worker cannot import from local directories.
 
-### Security Note 🔒
+#### **Security Note 🔒**:
 
 If you plan to make your repository public, remember to add the `urls.js` file to your `.gitignore` to prevent your Cloudflare Worker URL (and any other sensitive URLs or keys) from being exposed. This is crucial for security reasons.
-
-### Game Mechanics 🎮
-
-Players are presented with a set of cards, each card representing either a city or its corresponding country. The objective is to match each city with its country in the shortest time possible. The game timer starts as soon as the player starts the game and stops when all pairs are matched.
 
 ## **1. 🖥️ Frontend Components**:
 
