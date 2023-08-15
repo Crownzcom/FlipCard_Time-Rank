@@ -1,7 +1,7 @@
 // ==========================
 // IMPORTS
 // ==========================
-import { CLOUDFLARE_WORKER_URL } from './urls.mod.js';
+// import { CLOUDFLARE_WORKER_URL } from './urls.mod.js';
 
 // ==========================
 // VARIABLES
@@ -261,7 +261,7 @@ function showWinModal () {
 async function sendTimeToServer (time) {
   try {
     const response = await fetch(
-      CLOUDFLARE_WORKER_URL,
+      'https://time-rank.crownzcom.workers.dev/',
       {
         method: 'POST',
         body: JSON.stringify({
