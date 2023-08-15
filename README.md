@@ -1,30 +1,30 @@
 # 🌍 City-Country Match Game Developer Guide
-
 ## **📌 Table of Contents**:
-- [Introduction](#-introduction)
-  - [Serverless Computing](#-serverless-computing)
-  - [Project Structure](#-project-structure)
-  - [Using ES6 Modules](#using-es6-modules-📦)
-  - [Setting Up URLs](#setting-up-urls-🌐)
-  - [Local Development and Testing](#local-development-and-testing-🖥️)
-    - [Integrating URLs Directly into Code](#integrating-urls-directly-into-code-🌐)
-    - [The `file:///` Protocol Issue](#the-file-protocol-issue-🚫)
-  - [Security Note](#security-note-🔒)
-- [Frontend Components](#-frontend-components)
-  - [HTML](#11-html)
-  - [CSS](#12-css)
-  - [JavaScript](#13-javascript)
-- [Backend Components](#-backend-components)
-  - [Cloudflare Worker](#21-cloudflare-worker)
-  - [Google Apps Script (GAS)](#22-google-apps-script-gas)
-- [Game Flow](#-game-flow)
-  - [Initialization](#31-initialization)
-  - [Gameplay](#32-gameplay)
-  - [Game Completion](#33-game-completion)
-  - [Game Reset](#34-game-reset)
-- [Conclusion](#-conclusion)
+- [Introduction](#🌍-city-country-match-game-developer-guide)
+  - [Serverless Computing](#11-☁️-serverless-computing)
+  - [Project Structure](#12-project-structure-📌)
+  - [Using ES6 Modules](#13-using-es6-modules-📦)
+  - [Setting Up URLs](#14-setting-up-urls-🌐)
+  - [Local Development and Testing](#15-local-development-and-testing-🖥️)
+    - [Integrating URLs Directly into Code](#151-integrating-urls-directly-into-code-🌐)
+    - [The `file:///` Protocol Issue](#152-the-file-protocol-issue-🚫)
+  - [Security Note](#16-security-note-🔒)
+- [Frontend Components](#2-🖥️-frontend-components)
+  - [HTML](#21-html)
+  - [CSS](#22-css)
+  - [JavaScript](#23-javascript)
+- [Backend Components](#3-⚙️-backend-components)
+  - [Cloudflare Worker](#31-cloudflare-worker)
+  - [Google Apps Script (GAS)](#32-google-apps-script-gas)
+- [Game Flow](#4-🎲-game-flow)
+  - [Initialization](#41-initialization)
+  - [Gameplay](#42-gameplay)
+  - [Game Completion](#43-game-completion)
+  - [Game Reset](#44-game-reset)
+- [Conclusion](#5-🎉-conclusion)
 
-## **1.📌 Introduction**:
+
+## **📌 Introduction**:
 The City-Country Match Game is a card-matching game where players match cities to their corresponding countries. 🏙️🗺️ The game measures the time taken by the player to match all pairs and then ranks the player based on their performance.
 
 --
