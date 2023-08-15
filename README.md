@@ -7,8 +7,8 @@
   - [Using ES6 Modules](#using-es6-modules-📦)
   - [Setting Up URLs](#setting-up-urls-🌐)
   - [Local Development and Testing](#local-development-and-testing-🖥️)
-    - [The `file:///` Protocol Issue](#the-file-protocol-issue-🚫)
     - [Integrating URLs Directly into Code](#integrating-urls-directly-into-code-🌐)
+    - [The `file:///` Protocol Issue](#the-file-protocol-issue-🚫)
   - [Security Note](#security-note-🔒)
 - [Frontend Components](#-frontend-components)
   - [HTML](#11-html)
@@ -85,40 +85,39 @@ If you plan to make your repository public, remember to add the `urls.js` file t
 
 When developing and testing web applications locally, it's essential to be aware of certain browser security restrictions that can affect how your application runs.
 
-#### **1.5.1 The `file:///` Protocol Issue 🚫**:
-
-If you try to open your HTML file directly from your file system using the `file:///` protocol, you might encounter issues. Modern web browsers restrict certain features, including the ability to load ES6 modules, to protect against potential security threats.
-
-##### **1.5.1.1 Why does this happen? 🤔**:
-
-1. **CORS (Cross-Origin Resource Sharing) Restrictions**: Browsers implement CORS to prevent potential security issues arising when web pages make requests to domains other than their own. With the `file:///` protocol, the origin is `null`, leading browsers to block scripts due to CORS policies.
-
-2. **ES6 Modules**: These modules have their own set of CORS-related behaviors. They always request the module file with a CORS request, expecting the server to reply with appropriate CORS headers. This is a security feature ensuring modules are loaded securely. The `file:///` protocol doesn't support these headers, leading to errors.
-
-##### **1.5.1.2 Solution 💡**:
-
-Always use a local development server, like Live Server, when developing and testing web applications. This approach mirrors the environment of a live web server and helps you bypass many browser security restrictions related to the `file:///` protocol.
-
 --
-
-### **1.6 Integrating URLs Directly into Code 🌐**:
+#### **1.5.1 Integrating URLs Directly into Code 🌐**:
 
 You have the option to directly integrate URLs, such as the Google Apps Script URL, into your code. 
 
-#### **1.6.1 Advantages ✅**:
+##### **1.5.1.1 Advantages ✅**:
 
 1. **Simplicity**: Direct integration can be straightforward and requires less configuration.
 2. **No Additional Files**: You won't need extra files, like `urls.js`, making your project structure a bit simpler.
 
-#### **1.6.2 Disadvantages ❌**:
+##### **1.5.1.2 Disadvantages ❌**:
 
 1. **Security Risks**: Exposing URLs, especially those linked to backend services, can pose security threats. Malicious users can potentially misuse these URLs.
 2. **Less Flexibility**: If the URL changes, you'll need to modify and redeploy your application. With a configuration file, you can change the URL without touching the main code.
 3. **Public Repositories**: If you're using a version control system and plan to make your repository public, integrating URLs directly can expose them to everyone. Always ensure sensitive information is kept private.
 
-#### **1.6.3 Recommendation 🌟**:
+##### **1.5.1.3 Recommendation 🌟**:
 
 If you decide to integrate URLs directly, always weigh the pros and cons. For most scenarios, especially when security is a concern, using a configuration file like `urls.js` and adding it to `.gitignore` is a safer choice.
+
+#### **1.5.2 The `file:///` Protocol Issue 🚫**:
+
+If you try to open your HTML file directly from your file system using the `file:///` protocol, you might encounter issues. Modern web browsers restrict certain features, including the ability to load ES6 modules, to protect against potential security threats.
+
+##### **1.5.2.1 Why does this happen? 🤔**:
+
+1. **CORS (Cross-Origin Resource Sharing) Restrictions**: Browsers implement CORS to prevent potential security issues arising when web pages make requests to domains other than their own. With the `file:///` protocol, the origin is `null`, leading browsers to block scripts due to CORS policies.
+
+2. **ES6 Modules**: These modules have their own set of CORS-related behaviors. They always request the module file with a CORS request, expecting the server to reply with appropriate CORS headers. This is a security feature ensuring modules are loaded securely. The `file:///` protocol doesn't support these headers, leading to errors.
+
+##### **1.5.2.2 Solution 💡**:
+
+Always use a local development server, like Live Server, when developing and testing web applications. This approach mirrors the environment of a live web server and helps you bypass many browser security restrictions related to the `file:///` protocol.
 
 ---
 ## **2. 🖥️ Frontend Components**:
