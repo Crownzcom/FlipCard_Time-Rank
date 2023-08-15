@@ -1,6 +1,6 @@
 # 🌍 City-Country Match Game Developer Guide
 ## **📌 Table of Contents**:
-- [Introduction](#🌍-city-country-match-game-developer-guide)
+- [Introduction](#📌-introduction)
   - [Serverless Computing](#11-☁️-serverless-computing)
   - [Project Structure](#12-project-structure-📌)
   - [Using ES6 Modules](#13-using-es6-modules-📦)
@@ -9,7 +9,7 @@
     - [Integrating URLs Directly into Code](#151-integrating-urls-directly-into-code-🌐)
     - [The `file:///` Protocol Issue](#152-the-file-protocol-issue-🚫)
   - [Security Note](#16-security-note-🔒)
-- [Frontend Components](#2-🖥️-frontend-components)
+- [Frontend Components](#-🖥️-frontend-components)
   - [HTML](#21-html)
   - [CSS](#22-css)
   - [JavaScript](#23-javascript)
@@ -120,7 +120,7 @@ If you try to open your HTML file directly from your file system using the `file
 Always use a local development server, like Live Server, when developing and testing web applications. This approach mirrors the environment of a live web server and helps you bypass many browser security restrictions related to the `file:///` protocol.
 
 ---
-## **2. 🖥️ Frontend Components**:
+## **2 🖥️ Frontend Components**:
 
 ### **2.1 HTML**:
 The game's structure is defined in the HTML. Key components include:

@@ -8,11 +8,17 @@ body {
     background-color: #f0f0f0;
     overflow: auto;
     font-family: Roboto, sans-serif;
+
+    /* ... */
+    padding: 0; 
+    display: flex;
+    flex-direction: column; /* Added this line */
+    align-items: center; /* Added this line */
 }
 
 /* === GAME CONTAINER === */
 .game-container {
-    position: relative;
+    /* position: relative;
     top: 50%; 
     transform: translateY(-50%); 
     display: flex;
@@ -20,7 +26,16 @@ body {
     align-items: center;
     width: -moz-fit-content;
     width:fit-content;
+    max-width: 100%; */
+
+    /* ... */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
     max-width: 100%;
+
 }
 
 /* === GAME BOARD === */
@@ -219,26 +234,26 @@ button:hover {
   }
 
 /* === MEDIA QUERIES === */
-@media (min-width: 601px) {
+@media (min-width: 601px) and (orientation: landscape){
     .game-board {
         grid-template-columns: repeat(4, 1fr); 
     }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 801px) and (orientation: landscape){
     .game-board {
         grid-template-columns: repeat(5, 1fr); 
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 750px) and (orientation: landscape) {
     .card {
         width: 85px; 
         height: 85px;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px) and (orientation: landscape) {
     .modal-content h2 {
         font-size: 20px;  /* Reduced font size */
         margin-bottom: 10px;
@@ -254,7 +269,7 @@ button:hover {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500px) and (orientation: landscape){
     .card {
         width: 80px;
         height: 80px;
