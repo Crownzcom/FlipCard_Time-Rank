@@ -18,15 +18,9 @@ body {
 
 /* === GAME CONTAINER === */
 .game-container {
-    /* position: relative;
-    top: 50%; 
-    transform: translateY(-50%); 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: -moz-fit-content;
-    width:fit-content;
-    max-width: 100%; */
+    /* position: relative; */
+    /* top: 50%;  */
+    /* transform: translateY(-50%); */
 
     /* ... */
     display: flex;
