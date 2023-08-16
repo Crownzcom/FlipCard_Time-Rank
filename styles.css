@@ -133,7 +133,8 @@ body {
     width: 30%;  /* Increased width */
     max-width: 90%;  /* Set a maximum width */
     height: auto;  /* Let the height adjust based on content */
-    max-height: 80vh;  /* Set a maximum height */
+    max-height: -moz-fit-content;
+    max-height: fit-content; /* Let the height adjust based on content */
     overflow-y: auto;  /* Allow scrolling within the modal if content exceeds max-height*/
   
 }
@@ -196,7 +197,7 @@ button:hover {
 }
 
 #startGame {
-    padding: 45% 100%;
+    padding: 15px 40px;
     animation: pulsate 2s infinite;
     background-color: #ff407d;
 }
