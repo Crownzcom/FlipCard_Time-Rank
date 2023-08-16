@@ -143,6 +143,11 @@ body {
     z-index: 1;
 }
 
+#winModal{
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+}
+
 #winModal .green-text {/* for the rank message*/
     color: green;
 }
