@@ -154,7 +154,7 @@ function handleMatch () {
       stopTimer() // Stop the timer immediately when all cards are matched.
       finalElapsedTime = Date.now() - startTime // Store the elapsed time.
       // Delay the display of the win modal by 2 seconds to give the player a moment to see the matched cards.
-      setTimeout(showWinModal, 2000)
+      setTimeout(showWinModal, 4000)
     }
     cardFront.removeEventListener('transitionend', onEnd) // Remove the event listener after it's triggered.
   })
@@ -229,6 +229,8 @@ function showWinModal () {
   // Send the player's game time to the server to get their rank.
   sendTimeToServer(timeString)
     .then(data => {
+      clearTextContent() /* Clears the area where the ranking information will be displayed */
+
       // Hide the loading spinner.
       spinner.style.display = 'none'
 
@@ -260,19 +262,16 @@ function showWinModal () {
 // Function to send the player's game time to the server and get their rank.
 async function sendTimeToServer (time) {
   try {
-    const response = await fetch(
-      'https://time-rank.crownzcom.workers.dev/',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          type: 'saveTime',
-          time: time
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    const response = await fetch('https://time-rank.crownzcom.workers.dev/', {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'saveTime',
+        time: time
+      }),
+      headers: {
+        'Content-Type': 'application/json'
       }
-    )
+    })
 
     if (!response.ok) {
       throw new Error(
@@ -288,16 +287,17 @@ async function sendTimeToServer (time) {
 }
 
 //Function to clear Ranking text when a user clicks on restart
-function clearTextContent() {
+function clearTextContent () {
   // Select all elements with class 'rank-display' and 'time-display'
-  const elementsToClear = document.querySelectorAll('.rank-display, .time-display');
+  const elementsToClear = document.querySelectorAll(
+    '.rank-display, .time-display'
+  )
 
   // Loop through each element and clear its text content
   elementsToClear.forEach(element => {
-      element.textContent = '';
-  });
+    element.textContent = ''
+  })
 }
-
 
 // Function to reset the game state and start a new game.
 function resetGameState () {
@@ -306,13 +306,11 @@ function resetGameState () {
   shuffleCards() // Shuffle the cards on the game board.
   startTimer() // Start the game timer.
   clearTextContent() // Clear ranking text content
-  document.getElementById('winModal').style.display = 'none';  // Hide the "WIN" modal.
+  document.getElementById('winModal').style.display = 'none' // Hide the "WIN" modal.
 }
 
 // Restart the game after the form is submitted.
 document.getElementById('restartGame').addEventListener('click', function () {
   resetGameState() // Reset the game state and start a new game.
-  document.getElementById('winModal').style.display = 'none';  // Hide the "WIN" modal.
-  
-  // location.reload() // Refresh the entire page.
+  document.getElementById('winModal').style.display = 'none' // Hide the "WIN" modal.
 })

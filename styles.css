@@ -1,44 +1,48 @@
 /* === GLOBAL STYLES === */
 body {
-    margin: 0;
-    padding: 20px 0; 
-    height: 100vh;
+    /* margin: 20px; */
+    padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #f0f0f0;
-    overflow: auto;
+    align-items: center;
     font-family: Roboto, sans-serif;
+    min-height: 100%;
+    background-color: #f0f0f0;
+    height: 95vh;
 }
 
 /* === GAME CONTAINER === */
 .game-container {
-    position: relative;
-    top: 50%; 
-    transform: translateY(-50%); 
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: -moz-fit-content;
-    width:fit-content;
-    max-width: 100%;
+    gap: 1rem;
+    border: solid 5px #025ab900; /*For checking out the container area occupied. Reduce opacity to to view*/
 }
 
 /* === GAME BOARD === */
 .game-board {
+    width: 95vw; /* Adjusted to maintain card squareness */
+    max-width: 720px;
+    height: 71.25vw; /* 3/4 of the width for a 3x4 board */
+    max-height: 550px; /* 3/4 of the max-width */
+    min-height: 100px;
     display: grid;
-    width: -moz-fit-content;
-    width: fit-content;
-    gap: 10px; 
-    justify-content: center;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1vw; /* Provides consistent spacing between the cards */
+    border: #ff407c00 solid 2px; /*For checking out the borad area occupied. Reduce opacity to to view*/
 }
 
 /* === CARDS === */
 .card {
-    box-sizing: border-box;
-    height: 150px;
-    width: 150px;
-    margin: 5px; 
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
     perspective: 1000px;
     cursor: pointer;
 }
@@ -51,8 +55,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
     transition: transform 1s;  
 }
 
@@ -81,20 +85,28 @@ body {
 /* === GAME INFO === */
 .game-info {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.363);
 }
 
 #timer {
-    font-size: 1.5em;
-    background-color: #fff;
-    padding: 10px 20px;
+    max-width: 720px;
+    font-size: 25px;
+    background-color: #ffffff;
+    padding: 4px 8px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .hidden {
     display: none;
+}
+
+#replay {
+    margin-left: 20px;
+    padding: 5px 15px;
 }
 
 /* === MODALS === */
@@ -105,19 +117,25 @@ body {
     left: 0;
     width: 100%; 
     height: 100%; 
-    background-color: rgba(243, 255, 255, 0.973);
+    background-color: rgba(237, 250, 250, 0.082);
     z-index: 1000;
 }
 
-#introModal{
-    background-color: rgba(0, 0, 0, 0);
+#modalWelcome{
+    width: 55%;
+    max-width: 450px;
+}
+
+#winModalContent{
+    width: 65%;
+    min-height: 200px;
 }
 
 .modal-content {
-    display: flex;           /* Add this line */
-    flex-direction: column;  /* Add this line */
-    justify-content: center; /* Add this line */
-    align-items: center;     /* Add this line */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /* ... */
     position: absolute;
     top: 50%;
@@ -136,7 +154,6 @@ body {
     max-height: -moz-fit-content;
     max-height: fit-content; /* Let the height adjust based on content */
     overflow-y: auto;  /* Allow scrolling within the modal if content exceeds max-height*/
-  
 }
 
 .modal-content h2 {
@@ -148,41 +165,26 @@ body {
     z-index: 1;
 }
 
-#winModal{
-    background-color: rgba(0, 0, 0, 0.699);
-    max-height: -moz-fit-content;
-    max-height: fit-content;
-    /* max-width: -moz-fit-content;
-    max-width: fit-content; */
-}
-
 #winModal .green-text {/* for the rank message*/
     color: green;
 }
 
 
 .modal-content p {
-    color: #888;
+    color: #3a3a3a;
     font-weight:200;
     font-size: 18px;
     font-stretch: 100%;
     line-height: 1.5;
-    margin: 3px 0; /* Adjust the value as needed */
+    margin: 3px 0;
 }
 
 .modal-buttons {
     margin-top: 20px;
 }
 
-#modalWelcome p{
-    color: #000000;
-    font-weight:500;
-    padding-left: 0.8%;
-    padding-right: 0.8%;
-}
-
 button {
-    padding: 15px 30px;
+    padding: 10px 20px;
     margin: 5px;
     border: none;
     background-color: #ff407d;
@@ -197,25 +199,171 @@ button:hover {
 }
 
 #startGame {
-    padding: 15px 40px;
     animation: pulsate 2s infinite;
     background-color: #ff407d;
 }
 
 .loading-spinner {
-    border: 8px solid #a76868;
-    border-top: 8px solid #3498db;
+    border: 8px solid #3498db;
+    border-top: 8px solid #ff407d;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     animation: spin 1s linear infinite;
     margin: 10px auto;
-    z-index: 10; /* Add this line */
-    background-color: rgba(255, 255, 255, 0.8); /* Add this line */
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.11);
+    position: absolute;
+    align-self: center;
+    top: 30%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}  
+
+/* === CONTACT FORM === */
+#contactForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contactForm label {
+    font-weight: bold;
+}
+
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: row; /* Ensures it's row */
+}
+
+#sendButton {
+    align-self: center;
+    margin-top: 10px;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.disabled-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.disabled-button:enabled {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#thankYouModal {
+    width: 80vw;  
+    height: 80vh; 
+    position: fixed;
+    top: 60%;
+    left: 60%;
+    transform: translate(-60%, -60%);
+    overflow: auto; 
+}
+
+#thankYouContent {
+    width: 60%;
+    max-width: 90%;
+    width: 50vw;  
+    height: 50vh; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto; 
+}
+
+.header-image {
+    width: 100%; 
+    max-height: 300px; 
+    object-fit: cover;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.modal-content label {
+    display: block;  
+    text-align: left;  
+    padding-bottom: 8px;  
+    line-height: 19.88px;  
+    font-weight: 400;  
+    font-size: 14px;  
+}
+
+#privacyPolicy + label {
+    display: inline;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#privacyPolicy {
+    appearance: none; 
+    background-color: #f0f0f0; 
+    border: 1px solid rgb(60, 60, 60); 
+    width: 15px; 
+    height: 15px; 
+    cursor: pointer; 
+    position: relative; 
+}
+
+#privacyPolicy:checked {
+    background-color: #007BFF;
+}
+
+#privacyPolicy:checked::after {
+    content: '✓'; /* Unicode checkmark */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #ffffff;
+}
+
+#privacyPolicy, 
+#privacyPolicy + label {
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content input[type="text"], 
+.modal-content input[type="email"] {
+    border: 0.3px solid lightgrey; 
+    border-width: 0.2px;
+    padding: 5px; 
+    margin-bottom: 10px;
+    border-color: rgb(165, 166, 167); 
+    height: 38px;
+    width: inherit; 
+    border-radius: 3px;
+}
+
+.modal-content .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px; 
+}
+
+/* Error styling for the input field */
+.modal-content input[type="email"].input-error {
+    border-color: red;
+    animation: shake 0.5s;
 }
 
 /* === KEYFRAMES === */
@@ -239,67 +387,73 @@ button:hover {
     100% { transform: rotate(360deg); }
   }
 
-/* === MEDIA QUERIES === */
-@media (min-width: 601px) {
-    .game-board {
-        grid-template-columns: repeat(4, 1fr); 
-    }
+/* Shake animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
 }
 
+/* === MEDIA QUERIES === */
 @media (min-width: 801px) {
     .game-board {
         grid-template-columns: repeat(5, 1fr); 
     }
 }
 
-@media (max-width: 750px) {
-    .card {
-        width: 85px; 
-        height: 85px;
+@media (min-width: 601px) {
+    .game-board {
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
 @media (max-width: 700px) {
     .modal-content h2 {
-        font-size: 20px;  /* Reduced font size */
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
     .modal-content p {
-        font-size: 16px;  /* Reduced font size */
+        font-size: 16px;
+    }
+
+    .modal-content label {
+        font-size: 12px;
     }
 
     button {
-        padding: 8px 15px;  /* Reduced padding */
-        font-size: 14px;   /* Reduced font size */
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .modal-content input[type="text"], 
+    .modal-content input[type="email"] {
+        height: 30px;
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+
+    .header-image {
+        max-height: 200px;
     }
 }
 
-/* ... */
-@media (max-width: 650px) {
-    .card {
-        width: 130px;
-        height: 130px;
+@media (max-width: 550px) and (orientation: landscape){
+    .game-board {
+        gap: 0px;
     }
-}
-
-@media (max-width: 549px) {
-    .card {
-        width: 110px;
-        height: 110px;
+    .game-info {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
     }
-}
-
-@media (max-width: 500px) {
-    .card {
-        width: 95px;
-        height: 95px;
-    }
-}
-
-@media (max-width: 400px) {
-    .card {
-        width: 80px;
-        height: 80px;
+    #timer {
+        font-size: 20px;
+        background-color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 }
