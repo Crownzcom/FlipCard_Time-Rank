@@ -1,6 +1,5 @@
 /* === GLOBAL STYLES === */
 body {
-    /* margin: 20px; */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -18,20 +17,26 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    border: solid 5px #025ab900; /*For checking out the container area occupied. Reduce opacity to to view*/
+    border: solid 5px #025ab900;
+    /*For checking out the container area occupied. Reduce opacity to to view*/
 }
 
 /* === GAME BOARD === */
 .game-board {
-    width: 95vw; /* Adjusted to maintain card squareness */
+    width: 95vw;
+    /* Adjusted to maintain card squareness */
     max-width: 720px;
-    height: 71.25vw; /* 3/4 of the width for a 3x4 board */
-    max-height: 550px; /* 3/4 of the max-width */
+    height: 71.25vw;
+    /* 3/4 of the width for a 3x4 board */
+    max-height: 550px;
+    /* 3/4 of the max-width */
     min-height: 100px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1vw; /* Provides consistent spacing between the cards */
-    border: #ff407c00 solid 2px; /*For checking out the borad area occupied. Reduce opacity to to view*/
+    gap: 1vw;
+    /* Provides consistent spacing between the cards */
+    border: #ff407c00 solid 2px;
+    /*For checking out the borad area occupied. Reduce opacity to to view*/
 }
 
 /* === CARDS === */
@@ -47,7 +52,8 @@ body {
     cursor: pointer;
 }
 
-.card-back, .card-front {
+.card-back,
+.card-front {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -57,7 +63,7 @@ body {
     justify-content: center;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 10px;
-    transition: transform 1s;  
+    transition: transform 1s;
 }
 
 .card-back {
@@ -104,87 +110,90 @@ body {
     display: none;
 }
 
-#replay {
-    margin-left: 20px;
-    padding: 5px 15px;
-}
-
 /* === MODALS === */
 .modal {
     display: none;
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(237, 250, 250, 0.082);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.404);
     z-index: 1000;
 }
 
-#modalWelcome{
-    width: 55%;
-    max-width: 450px;
-}
-
-#winModalContent{
-    width: 65%;
-    min-height: 200px;
-}
-
 .modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* ... */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
     text-align: center;
-    background-color: #ffffff;  
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  
-    border-radius: 8px;  
-    padding: 15px 20px;
-    /* ... */
-    width: 30%;  /* Increased width */
-    max-width: 90%;  /* Set a maximum width */
-    height: auto;  /* Let the height adjust based on content */
-    max-height: -moz-fit-content;
-    max-height: fit-content; /* Let the height adjust based on content */
-    overflow-y: auto;  /* Allow scrolling within the modal if content exceeds max-height*/
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.253);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 .modal-content h2 {
-    color: #333;  
-    font-weight:400;
-    font-size: 24px;  
+    color: #333;
+    font-weight: 400;
+    font-size: 24px;
     margin-bottom: 15px;
-    position: relative; 
-    z-index: 1;
 }
-
-#winModal .green-text {/* for the rank message*/
-    color: green;
-}
-
 
 .modal-content p {
     color: #3a3a3a;
-    font-weight:200;
+    font-weight: 200;
     font-size: 18px;
     font-stretch: 100%;
     line-height: 1.5;
-    margin: 3px 0;
+    /* margin: 3px 0; */
 }
 
-.modal-buttons {
-    margin-top: 20px;
+/* ===Intro modal === */
+#introModal {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modalWelcome {
+    width: 80vw;
+    max-width: 500px;
+    /* Added a max-width for better control */
+    height: auto;
+    max-height: 80vh;
+    overflow: auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#modalWelcome p {
+    color: #000000;
+    font-weight: 500;
+    padding: 0.8%;
+    margin: 0;
+    /* To remove any default margin */
 }
 
 button {
-    padding: 10px 20px;
+    font-weight: 500;
+    padding: 15px 30px;
     margin: 5px;
     border: none;
     background-color: #ff407d;
@@ -194,9 +203,68 @@ button {
     transition: background-color 0.3s;
 }
 
+#startGame {
+    padding: 15px 40px;
+    animation: pulsate 2s infinite;
+    background-color: #ff407d;
+}
+
 button:hover {
     background-color: #b90b43;
 }
+
+#startGame {
+    animation: pulsate 2s infinite;
+    background-color: #ff407d;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+}
+
+
+/*  === Win - Modal === */
+#winModal {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it's above other content */
+}
+
+#winModalContent {
+    width: 80vw;
+    max-width: 600px;
+    height: auto;
+    max-height: 80vh;
+    overflow: auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 2vw;
+}
+
+#winModalContent h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+}
+
+#winModalContent p {
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+    text-align: center;
+}
+
+#winModal .green-text {
+    /* for the rank message*/
+    color: green;
+}
+
 
 #startGame {
     animation: pulsate 2s infinite;
@@ -218,152 +286,6 @@ button:hover {
     top: 30%;
     left: 40%;
     transform: translate(-50%, -50%);
-}  
-
-/* === CONTACT FORM === */
-#contactForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#contactForm label {
-    font-weight: bold;
-}
-
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-direction: row; /* Ensures it's row */
-}
-
-#sendButton {
-    align-self: center;
-    margin-top: 10px;
-}
-
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.disabled-button {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.disabled-button:enabled {
-    opacity: 1;
-    cursor: pointer;
-}
-
-#thankYouModal {
-    width: 80vw;  
-    height: 80vh; 
-    position: fixed;
-    top: 60%;
-    left: 60%;
-    transform: translate(-60%, -60%);
-    overflow: auto; 
-}
-
-#thankYouContent {
-    width: 60%;
-    max-width: 90%;
-    width: 50vw;  
-    height: 50vh; 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: auto; 
-}
-
-.header-image {
-    width: 100%; 
-    max-height: 300px; 
-    object-fit: cover;
-    margin-bottom: 20px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.modal-content label {
-    display: block;  
-    text-align: left;  
-    padding-bottom: 8px;  
-    line-height: 19.88px;  
-    font-weight: 400;  
-    font-size: 14px;  
-}
-
-#privacyPolicy + label {
-    display: inline;
-    text-align: left;
-    vertical-align: middle;
-}
-
-#privacyPolicy {
-    appearance: none; 
-    background-color: #f0f0f0; 
-    border: 1px solid rgb(60, 60, 60); 
-    width: 15px; 
-    height: 15px; 
-    cursor: pointer; 
-    position: relative; 
-}
-
-#privacyPolicy:checked {
-    background-color: #007BFF;
-}
-
-#privacyPolicy:checked::after {
-    content: '✓'; /* Unicode checkmark */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 16px;
-    color: #ffffff;
-}
-
-#privacyPolicy, 
-#privacyPolicy + label {
-    margin: 0;
-    padding: 0;
-}
-
-.modal-content input[type="text"], 
-.modal-content input[type="email"] {
-    border: 0.3px solid lightgrey; 
-    border-width: 0.2px;
-    padding: 5px; 
-    margin-bottom: 10px;
-    border-color: rgb(165, 166, 167); 
-    height: 38px;
-    width: inherit; 
-    border-radius: 3px;
-}
-
-.modal-content .checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    gap: 10px; 
-}
-
-/* Error styling for the input field */
-.modal-content input[type="email"].input-error {
-    border-color: red;
-    animation: shake 0.5s;
 }
 
 /* === KEYFRAMES === */
@@ -372,10 +294,12 @@ a:hover {
         transform: scale(1);
         opacity: 0.9;
     }
+
     50% {
         transform: scale(1.05);
         opacity: 1;
     }
+
     100% {
         transform: scale(1);
         opacity: 0.9;
@@ -383,29 +307,25 @@ a:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-/* Shake animation */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* === MEDIA QUERIES === */
 @media (min-width: 801px) {
     .game-board {
-        grid-template-columns: repeat(5, 1fr); 
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
 @media (min-width: 601px) {
     .game-board {
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -428,32 +348,94 @@ a:hover {
         font-size: 14px;
     }
 
-    .modal-content input[type="text"], 
-    .modal-content input[type="email"] {
-        height: 30px;
-        font-size: 14px;
-        padding: 4px 8px;
+    .modal-content,
+    #winModalContent {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
     }
 
-    .header-image {
-        max-height: 200px;
+    #modalWelcome {
+        width: 80%;
+        height: 45%
     }
 }
 
-@media (max-width: 550px) and (orientation: landscape){
+@media (max-width: 600px) {
+    .game-board {
+        width: 98vw;
+        /* Adjusted to maintain card squareness */
+        max-width: 720px;
+        height: 73.5vw;
+        /* 3/4 of the width for a 3x4 board */
+        max-height: 550px;
+        /* 3/4 of the max-width */
+    }
+
+    #modalWelcome,
+    #winModalContent {
+        padding: 2px 5px;
+        /* Reduced padding */
+        width: 95vw;
+        /* Slightly increased width */
+    }
+
+    #modalWelcome p,
+    #winModalContent h2,
+    #winModalContent p {
+        font-size: 13px;
+        /* Reduced font size */
+        padding: 0.8%;
+        /* Reduced padding */
+    }
+
+    button {
+        font-size: 14px;
+        /* Reduced font size */
+        padding: 8px 15px;
+        /* Reduced padding */
+    }
+
+    #startGame {
+        padding: 8px 20px;
+        /* Reduced padding */
+    }
+
+    #winModalContent label {
+        font-size: 12px;
+        /* Reduced font size */
+        margin-bottom: 5px;
+        /* Reduced margin */
+    }
+
+    #winModalContent {
+        /* width: 100%; */
+        height: 100vh !important;
+    }
+}
+
+@media (max-width: 550px) and (orientation: landscape) {
     .game-board {
         gap: 0px;
     }
+
     .game-info {
         display: flex;
         justify-content: center;
         margin-bottom: 5px;
     }
+
     #timer {
         font-size: 20px;
         background-color: #fff;
         padding: 5px 10px;
         border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content,
+    #winModalContent {
+        width: 100%;
+        height: 100%;
     }
 }
